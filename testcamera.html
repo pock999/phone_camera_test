@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>測試OCR</title>
+</head>
+<body>
+    <h1>測試頁</h1>
+    <!-- <input type="file" accept="image/*;capture=camera"> -->
+    <div id="screenshot">
+        <video autoplay></video>
+        <img src="">
+        <canvas style="display:none;"></canvas>
+        <button id="screenshot-button">截圖</button>
+    </div>
+    
+    <script>
+    
+    
+    const screenshotButton = document.querySelector('#screenshot-button');
+    const img = document.querySelector('#screenshot img');
+    const canvas = document.createElement('canvas');
+    const video = document.querySelector('#screenshot video');
+
+    // navigator.mediaDevices.getUserMedia(constraints).
+    //     then((stream) => {video.srcObject = stream});
+    
+    function getStream() {
+        if (window.stream) {
+                window.stream.getTracks().forEach(function(track) {
+                track.stop();
+            });
+        }
+
+        const constraints = {
+            audio: false,
+            video: {
+                width: { min: 1024, ideal: 1280, max: 1920 },
+                height: { min: 576, ideal: 720, max: 1080 },
+            }
+        };
+        
+
+        navigator.mediaDevices.getUserMedia(constraints).
+            then(gotStream).catch(handleError);
+    }
+
+    function gotStream(stream) {
+        window.stream = stream; // make stream available to console
+        videoElement.srcObject = stream;
+    }
+
+    function handleError(error) {
+        console.error('Error: ', error);
+    }
+
+    screenshotButton.onclick = function() {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0);
+        // Other browsers will fall back to image/png
+        img.src = canvas.toDataURL('image/webp');
+    };
+    </script>
+</body>
+</html>
