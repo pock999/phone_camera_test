@@ -19,11 +19,6 @@
             width:100%;
         }
     </style>
-    <script defer>
-        var v_width = document.getElementById('camera').offsetWidth;
-        var camera = document.getElementById("camera");
-        var v_height = width/1.5;
-    </script>
 </head>
 <body>
     <h1>測試頁</h1>
@@ -32,21 +27,38 @@
     </figure>
     
     <script>
-    // var v_width = document.getElementById('camera').offsetWidth;
-    // var camera = document.getElementById("camera");
-    // var v_height = width/1.5;
-    // Prefer camera resolution nearest to 1080x720.
-    var constraints = { video:  { width: v_width, height: v_height }  }; 
+        var constraints = { video: true }; 
+        var set_video_wh = () => {
+            var v_width = document.getElementById('camera').offsetWidth;
+            var camera = document.getElementById("camera");
+            var v_height = width/1.5;
+            return new Promise(resolve => {
+                constraints = { video:  { width: v_width, height: v_height }  }; 
+            });
+        }
+        set_video_wh().then(() => {
+            navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(mediaStream) {
+            var video = document.querySelector('video');
+            video.srcObject = mediaStream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+            };
+            })
+            .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
+        })
+        // Prefer camera resolution nearest to 1080x720.
+        // var constraints = { video:  { width: v_width, height: v_height }  }; 
 
-    navigator.mediaDevices.getUserMedia(constraints)
-    .then(function(mediaStream) {
-    var video = document.querySelector('video');
-    video.srcObject = mediaStream;
-    video.onloadedmetadata = function(e) {
-        video.play();
-    };
-    })
-    .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
+        // navigator.mediaDevices.getUserMedia(constraints)
+        // .then(function(mediaStream) {
+        // var video = document.querySelector('video');
+        // video.srcObject = mediaStream;
+        // video.onloadedmetadata = function(e) {
+        //     video.play();
+        // };
+        // })
+        // .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
     
     </script>
 </body>
