@@ -22,11 +22,13 @@
 <body>
     <h1>測試頁</h1>
     <figure>
-        <video autoplay></video>
+        <video autoplay id="camera"></video>
     </figure>
     
     <script>
-    
+    var width = document.getElementById('camera').offsetWidth;
+    var camera = document.getElementById("camera");
+    alert(width);
     // Prefer camera resolution nearest to 1080x720.
     var constraints = { video:  { width: '100%', height: '100%' }  }; 
 
