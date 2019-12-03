@@ -34,7 +34,10 @@
             var v_height = width/1.5;
             return new Promise(resolve => {
                 constraints = { video:  { width: v_width, height: v_height }  }; 
-                navigator.mediaDevices.getUserMedia(constraints)
+            });
+        }
+        set_video_wh().then(() => {
+            navigator.mediaDevices.getUserMedia(constraints)
                 .then(function(mediaStream) {
                 var video = document.querySelector('video');
                 video.srcObject = mediaStream;
@@ -43,9 +46,7 @@
                 };
                 })
                 .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
-                });
-        }
-        set_video_wh();
+        });
         // Prefer camera resolution nearest to 1080x720.
         // var constraints = { video:  { width: v_width, height: v_height }  }; 
 
