@@ -14,7 +14,7 @@
             margin:0px;
             margin: 0 auto;
             width: 100%;
-            padding-top: 66.66%;
+            padding-top: 62.79%;
             height: 0px;
             position: relative;
         }
@@ -37,7 +37,7 @@
     <script>
         
         // Prefer camera resolution nearest to 1080x720.
-        var constraints = { video:  { width: '540', height: '360' }  }; 
+        var constraints = { video: true }; 
 
         navigator.mediaDevices.getUserMedia(constraints)
         .then(function(mediaStream) {
