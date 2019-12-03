@@ -11,13 +11,13 @@
 <body>
     <h1>測試頁</h1>
     <figure>
-        <video autoplay></video>
+        <video autoplay width="540" height="360"></video>
     </figure>
     
     <script>
     
     // Prefer camera resolution nearest to 1080x720.
-    var constraints = { video: { width: 540, height: 360 } }; 
+    var constraints = { video: true }; 
 
     navigator.mediaDevices.getUserMedia(constraints)
     .then(function(mediaStream) {
