@@ -8,14 +8,14 @@
 </head>
 <body>
     <h1>測試頁</h1>
-    <figure>
+    <figure style="width:100%;height:auto;">
         <video autoplay></video>
     </figure>
     
     <script>
     
-    // Prefer camera resolution nearest to 1280x720.
-    var constraints = { video: { width: 1280, height: 720 } }; 
+    // Prefer camera resolution nearest to 1080x720.
+    var constraints = { video: { width: 1080, height: 720 } }; 
 
     navigator.mediaDevices.getUserMedia(constraints)
     .then(function(mediaStream) {
