@@ -27,12 +27,13 @@
     </figure>
     
     <script>
+        var constraints;
         var set_video_wh = () => {
             var v_width = document.getElementById('camera').offsetWidth;
             var camera = document.getElementById("camera");
             var v_height = width/1.5;
             return new Promise(resolve => {
-                var constraints = { video:  { width: v_width, height: v_height }  }; 
+                constraints = { video:  { width: v_width, height: v_height }  }; 
                 navigator.mediaDevices.getUserMedia(constraints)
                 .then(function(mediaStream) {
                 var video = document.querySelector('video');
