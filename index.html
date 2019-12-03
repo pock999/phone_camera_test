@@ -8,13 +8,13 @@
 </head>
 <body>
     <h1>測試頁</h1>
-    <iframe allow="camera 'none'; microphone 'none'"></iframe>
+    <iframe allow="camera"></iframe>
     
     
     <script>
     
     // Prefer camera resolution nearest to 1280x720.
-    var constraints = { audio: true, video: { width: 1280, height: 720 } }; 
+    var constraints = { video: { width: 1280, height: 720 } }; 
 
     navigator.mediaDevices.getUserMedia(constraints)
     .then(function(mediaStream) {
