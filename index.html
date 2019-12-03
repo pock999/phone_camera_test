@@ -16,6 +16,7 @@
         }
         video{
             margin: 0 auto;
+            width:100%;
         }
     </style>
 </head>
@@ -26,11 +27,11 @@
     </figure>
     
     <script>
-    var width = document.getElementById('camera').offsetWidth;
+    var v_width = document.getElementById('camera').offsetWidth;
     var camera = document.getElementById("camera");
-    alert(width);
+    var v_height = width/1.5;
     // Prefer camera resolution nearest to 1080x720.
-    var constraints = { video:  { width: '100%', height: '100%' }  }; 
+    var constraints = { video:  { width: v_width, height: v_height }  }; 
 
     navigator.mediaDevices.getUserMedia(constraints)
     .then(function(mediaStream) {
