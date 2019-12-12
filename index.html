@@ -28,6 +28,12 @@
     <input id="take-picture" type="button" disabled="true" value="擷取圖片"></input>
     
     <script>
+        fetch("http://140.125.84.80:8000")
+            .then((res)=>{
+                alert("test index:"+res);
+            }).catch((e)=>{
+                alert("index error:"+e);
+            });
         function getCookie(name) {
             var cookieValue = null;
             if (document.cookie && document.cookie !== '') {
@@ -74,9 +80,9 @@
                         alert(response.json());
                         return response.json(); 
                     }).then((jsonData) => {
-                        console.log(jsonData);
+                        alert(jsonData);
                     }).catch((err) => {
-                        console.log('錯誤:', err);
+                        alert('辨識功能錯誤:', err);
                     })
             };
             // video.onloadedmetadata = function(e) {
@@ -84,7 +90,7 @@
             // };
             
         })
-        .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
+        .catch(function(err) { alert(err.name + ": " + err.message); }); // always check for errors at the end.
     
     </script>
 </body>
