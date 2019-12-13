@@ -28,7 +28,7 @@
     <input id="take-picture" type="button" disabled="true" value="擷取圖片"></input>
     訊息：<div id="message"></div>
     <script>
-        fetch("http://140.125.84.80:8000")
+        fetch("https://www.yuntocruapitestdasdfghname.tk")
             .then((res)=>{
                 alert("test index:"+res);
             }).catch((e)=>{
@@ -63,7 +63,7 @@
             button.onclick = function() {
                 canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
                 var img = canvas.toDataURL("image/jpeg", 1.0);
-                fetch("http://140.125.84.80:8000/resocr/", {
+                fetch("https://www.yuntocruapitestdasdfghname.tk/resocr/", {
                     method: 'POST',
                     credentials: "same-origin",
                     // headers 加入 json 格式
