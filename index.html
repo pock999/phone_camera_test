@@ -30,7 +30,10 @@
     <script>
         fetch("https://www.yuntocruapitestdasdfghname.tk")
             .then((res)=>{
-                alert("test index:"+res);
+                return res.json(); 
+            }).then((jsonData) => {
+                    alert(jsonData);
+                    console.log(jsonData);
             }).catch((e)=>{
                 alert("index error:"+e);
             });
@@ -77,7 +80,6 @@
                         imgBase64:img
                     })
                     }).then((response) => {
-                        alert(response.json());
                         return response.json(); 
                     }).then((jsonData) => {
                         alert(jsonData);
