@@ -68,7 +68,7 @@
                 var img = canvas.toDataURL("image/jpeg", 1.0);
                 fetch("https://www.yuntocruapitestdasdfghname.tk/resocr/", {
                     method: 'POST',
-                    credentials: "same-origin",
+                    credentials: 'include',
                     // headers 加入 json 格式
                     headers: {
                         "X-CSRFToken": getCookie("csrftoken"),
