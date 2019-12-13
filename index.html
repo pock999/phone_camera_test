@@ -82,7 +82,7 @@
                     }).then((response) => {
                         return response.json(); 
                     }).then((jsonData) => {
-                        alert(jsonData);
+                        alert(jsonData[0]);
                     }).catch((err) => {
                         alert('辨識功能錯誤:', err);
                     })
