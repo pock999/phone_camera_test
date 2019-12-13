@@ -33,7 +33,7 @@
                 return res.json(); 
             }).then((jsonData) => {
                     alert(jsonData);
-                    console.log(jsonData);
+                    console.log(jsonData[0]);
             }).catch((e)=>{
                 alert("index error:"+e);
             });
