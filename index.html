@@ -37,7 +37,7 @@
                 return res.json(); 
             }).then((jsonData) => {
                     alert(jsonData);
-                    console.log(jsonData[0]);
+                    console.log("test get:"+jsonData[0]);
             }).catch((e)=>{
                 alert("index error:"+e);
             });
@@ -86,7 +86,7 @@
                     }).then((response) => {
                         return response.json(); 
                     }).then((jsonData) => {
-                        alert("test get:"+jsonData[0]);
+                        alert(jsonData[0]);
                     }).catch((err) => {
                         alert('辨識功能錯誤:', err);
                     })
