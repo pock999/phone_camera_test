@@ -80,6 +80,8 @@
             dataType: 'json',
             success:function(re){
                 alert(re[0]);
+                let message_area = document.getElementById('message');
+                message_area.innerHTML = re[0];
             },
             error: function(e){
                 alert("index_page error:"+e);
