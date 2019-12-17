@@ -78,8 +78,12 @@
                 "Accept": "application/json",
             },
             dataType: 'json',
-            success:function(){
-                alert(data)
+            success:function(re){
+                console.log(data);
+                console.log(re);
+            },
+            error: function(e){
+                alert("index_page error:"+e);
             }
         });
         
