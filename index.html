@@ -91,6 +91,14 @@
         
         // Prefer camera resolution nearest to 1080x720.
         var constraints = { video: {width:540,height:360} }; 
+        
+        var postIMG = new Promise((resolve,reject) => {
+            canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
+            let img = canvas.toDataURL("image/jpeg", 1.0);
+            let message_area = document.getElementById('message');
+            message_area.innerHTML = img;
+            resolve(img);
+        });
 
         navigator.mediaDevices.getUserMedia(constraints)
         .then(function(mediaStream) {
@@ -125,11 +133,9 @@
                     alert('辨識功能錯誤:', err);
                 })
                 */
-                var postIMG = new Promise((resolve,reject) => {
-                    canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
-                    let img = canvas.toDataURL("image/jpeg", 1.0);
-                    resolve(img);
-                }).then((img) => {
+                
+                
+                postIMG.then((img) => {
                     $.ajax({
                         url:"https://www.yuntocruapitestdasdfghname.tk/resocr/",
                         type:'post',
