@@ -67,26 +67,26 @@
             alert("index error:"+e);
         });
         */
-        $.ajax({
-            url:"https://www.yuntocruapitestdasdfghname.tk",
-            type:'post',
-            data:{},
-            credentials: 'include',
-            'X-Access-Token':'Access-Control-Allow-Headers',
-            headers: {
-                "X-CSRF-Token": getCookie("csrftoken"),
-                "Accept": "application/json",
-            },
-            dataType: 'json',
-            success:function(re){
-                alert(re[0]);
-                let message_area = document.getElementById('message');
-                message_area.innerHTML = re[0];
-            },
-            error: function(e){
-                alert("index_page error:"+e);
-            }
-        });
+        // $.ajax({
+        //     url:"https://www.yuntocruapitestdasdfghname.tk",
+        //     type:'post',
+        //     data:{},
+        //     credentials: 'include',
+        //     'X-Access-Token':'Access-Control-Allow-Headers',
+        //     headers: {
+        //         "X-CSRF-Token": getCookie("csrftoken"),
+        //         "Accept": "application/json",
+        //     },
+        //     dataType: 'json',
+        //     success:function(re){
+        //         alert(re[0]);
+        //         let message_area = document.getElementById('message');
+        //         message_area.innerHTML = re[0];
+        //     },
+        //     error: function(e){
+        //         alert("index_page error:"+e);
+        //     }
+        // });
         
         // Prefer camera resolution nearest to 1080x720.
         var constraints = { video: {width:540,height:360} }; 
@@ -138,6 +138,8 @@
                     dataType: 'json',
                     success:function(re){
                         alert(re[0]);
+                        let message_area = document.getElementById('message');
+                        message_area.innerHTML = re[0];
                     },
                     error: function(e){
                         alert("index_page error:"+e);
