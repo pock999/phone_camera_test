@@ -21,7 +21,7 @@
 </head>
 <body>
     <h1>測試頁</h1>
-    用Firefox
+    <h2>用Firefox</h2>
     <figure>
         <video autoplay id="camera"></video>
     </figure>
@@ -100,8 +100,9 @@
             video.srcObject = mediaStream;
             button.disabled = false;
             button.onclick = function() {
-                canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
-                var img = canvas.toDataURL("image/jpeg", 1.0);
+                // canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
+                // var img = canvas.toDataURL("image/jpeg", 1.0);
+
                 /*
                 fetch("https://www.yuntocruapitestdasdfghname.tk/resocr/", {
                     method: 'POST',
@@ -124,29 +125,37 @@
                     alert('辨識功能錯誤:', err);
                 })
                 */
-                $.ajax({
-                    url:"https://www.yuntocruapitestdasdfghname.tk/resocr/",
-                    type:'post',
-                    data:{
-                        imgBase64:img
-                    },
-                    credentials: 'include',
-                    'X-Access-Token':'Access-Control-Allow-Headers',
-                    headers: {
-                        "X-CSRF-Token": getCookie("csrftoken"),
-                        "Accept": "application/json",
-                    },
-                    dataType: 'json',
-                    success:function(re){
-                        alert(re[0]);
-                        let message_area = document.getElementById('message');
-                        message_area.innerHTML = re[0];
-                    },
-                    error: function(e){
-                        // alert("error:"+e[0]);
-                        alert(img);
-                    }
+                var postIMG = new Promise((resolve,reject) => {
+                    canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
+                    let img = canvas.toDataURL("image/jpeg", 1.0);
+                    resolve(img);
+                }).then((img) => {
+                    $.ajax({
+                        url:"https://www.yuntocruapitestdasdfghname.tk/resocr/",
+                        type:'post',
+                        data:{
+                            imgBase64:img
+                        },
+                        credentials: 'include',
+                        'X-Access-Token':'Access-Control-Allow-Headers',
+                        headers: {
+                            "X-CSRF-Token": getCookie("csrftoken"),
+                            "Accept": "application/json",
+                        },
+                        dataType: 'json',
+                        success:function(re){
+                            alert(re[0]);
+                            let message_area = document.getElementById('message');
+                            message_area.innerHTML = re[0];
+                        },
+                        error: function(e){
+                            alert("error:"+e[0]);
+                        }
+                    });
+                }).catch((reason) => {
+                    alert('promise except! ' + reason);
                 });
+                
             };
             // video.onloadedmetadata = function(e) {
             //     video.play();
