@@ -101,15 +101,15 @@
 		    var button = document.getElementById("take-picture");
             video.srcObject = mediaStream;
             button.disabled = false;
-            var postIMG = new Promise((resolve,reject) => {
-                canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
-                let img = canvas.toDataURL("image/jpeg", 1.0);
-                let message_area = document.getElementById('message');
-                message_area.innerHTML = img;
-                resolve(img);
-            });
+            
             button.onclick = function() {
-                
+                var postIMG = new Promise((resolve,reject) => {
+                    canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
+                    let img = canvas.toDataURL("image/jpeg", 1.0);
+                    let message_area = document.getElementById('message');
+                    message_area.innerHTML = img;
+                    resolve(img);
+                });
                 // canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
                 // var img = canvas.toDataURL("image/jpeg", 1.0);
 
