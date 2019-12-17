@@ -71,14 +71,14 @@
                 canvas.getContext("2d").drawImage(video, 0, 0, 300, 300, 0, 0, 300, 300);
                 var img = canvas.toDataURL("image/jpeg", 1.0);
                 fetch("https://www.yuntocruapitestdasdfghname.tk/resocr/", {
-                    method: 'POST',
-                    credentials: 'include',
-                        'X-Access-Token':'Access-Control-Allow-Headers',
+                    method: 'GET',
+                    // credentials: 'include',
+                    //     'X-Access-Token':'Access-Control-Allow-Headers',
                     // headers 加入 json 格式
-                    headers: {
-                        "X-CSRFToken": getCookie("csrftoken"),
-                        "Accept": "application/json",
-                    },
+                    // headers: {
+                    //     "X-CSRFToken": getCookie("csrftoken"),
+                    //     "Accept": "application/json",
+                    // },
                     // body 將 json 轉字串送出
                     body: JSON.stringify({
                         imgBase64:img
