@@ -32,15 +32,24 @@
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
     <script>
-        fetch("https://www.yuntocruapitestdasdfghname.tk")
-            .then((res)=>{
-                return res.json(); 
-            }).then((jsonData) => {
-                    alert(jsonData);
-                    console.log("test get:"+jsonData[0]);
-            }).catch((e)=>{
-                alert("index error:"+e);
-            });
+        fetch("https://www.yuntocruapitestdasdfghname.tk",{
+            method: 'GET',
+            credentials: 'include',
+                'X-Access-Token':'Access-Control-Allow-Headers',
+            // headers 加入 json 格式
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken"),
+                "Accept": "application/json",
+            },
+        })
+        .then((res)=>{
+            return res.json(); 
+        }).then((jsonData) => {
+                alert(jsonData);
+                console.log("test get:"+jsonData[0]);
+        }).catch((e)=>{
+            alert("index error:"+e);
+        });
         function getCookie(name) {
             var cookieValue = null;
             if (document.cookie && document.cookie !== '') {
