@@ -32,6 +32,22 @@
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
     <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        /*
         fetch("https://www.yuntocruapitestdasdfghname.tk",{
             method: 'POST',
             credentials: 'include',
@@ -50,21 +66,22 @@
         }).catch((e)=>{
             alert("index error:"+e);
         });
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
+        */
+        $.ajax({
+            url:"https://www.yuntocruapitestdasdfghname.tk",
+            type:'post',
+            data:{},
+            credentials: 'include',
+            'X-Access-Token':'Access-Control-Allow-Headers',
+            headers: {
+                "X-CSRF-Token": getCookie("csrftoken"),
+                "Accept": "application/json",
+            },
+            dataType: 'json',
+            success:function(){
+                alert(data)
             }
-            return cookieValue;
-        }
+        });
         
         // Prefer camera resolution nearest to 1080x720.
         var constraints = { video: {width:540,height:360} }; 
